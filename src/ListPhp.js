@@ -1,17 +1,22 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-class ListPosts extends Component {
+class ListPhp extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      Id: "",
+      Title: "",
+      Body: "",
+      Author: "",
       listItems: []
     };
   }
 
   componentDidMount() {
-    return fetch("https://test-react-5b3fc.firebaseio.com/product.json")
+    return fetch("http://technicalhspt.org/test/read.php")
       .then(response => response.json())
-      .then(data => this.setState({ listItems: data, isLoading: false }))
+      .then(data => this.setState({ listItems: data }))
+      .then(data => console.log(data))
       .catch(error => {
         //console.error(error);
       });
@@ -20,8 +25,6 @@ class ListPosts extends Component {
     const result = Object.keys(this.state.listItems).map(
       key => this.state.listItems[key]
     );
-    //const result = result1.filter(el => el.id === 1);
-    //console.log(result);
     return (
       <table className="table table-dark" style={{ marginTop: 10 }}>
         <thead>
@@ -29,7 +32,7 @@ class ListPosts extends Component {
             <td>Id</td>
             <td>Title</td>
             <td>Body</td>
-            <td>userId</td>
+            <td>Author</td>
           </tr>
         </thead>
         <tbody>
@@ -38,11 +41,10 @@ class ListPosts extends Component {
               <td>{resultData.id}</td>
               <td>{resultData.title}</td>
               <td>{resultData.body}</td>
-              <td>{resultData.userId}</td>
-
+              <td>{resultData.author}</td>
               <td>
                 <Link
-                  to={"/EditPost/" + resultData.userId}
+                  to={"/EditPhp/" + resultData.id}
                   className="btn btn-success"
                 >
                   Edit
@@ -61,4 +63,4 @@ class ListPosts extends Component {
   }
 }
 
-export default ListPosts;
+export default ListPhp;

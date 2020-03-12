@@ -1,2 +1,4 @@
 https://www.c-sharpcorner.com/article/crud-operations-using-web-api-and-reactjs/
 https://jsonplaceholder.typicode.com/posts
+//"proxy": "https://jsonplaceholder.typicode.com",
+https://www.w3jar.com/crud-rest-api-in-php-pdo/

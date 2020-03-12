@@ -16,18 +16,18 @@ class AddPost extends Component {
       Id: "",
       Title: "",
       Body: "",
-      Author: ""
+      userId: ""
     };
   }
 
   Addstudent = () => {
-    fetch("http://technicalhspt.org/test/insert.php", {
+    fetch("https://test-react-5b3fc.firebaseio.com/product.json", {
       method: "POST",
       body: JSON.stringify({
         id: this.state.Id,
         title: this.state.Title,
         body: this.state.Body,
-        author: this.state.Author
+        userId: this.state.UserId
       }),
       headers: {
         "Content-type": "application/json; charset=UTF-8"
@@ -44,35 +44,30 @@ class AddPost extends Component {
       <div>
         <Container className="App">
           <h4 className="PageHeading">Add Posts</h4>
+          <hr size="30" />
           <Form className="form">
             <Col>
               <FormGroup row>
                 <Label for="name" sm={2}>
                   Id
                 </Label>
-                <Col sm={10}>
+                <Col sm={4}>
                   <Input
                     type="text"
                     name="Id"
                     onChange={this.handleChange}
                     value={this.state.Id}
-                    placeholder="Enter Id"
                   />
                 </Col>
-              </FormGroup>
-            </Col>
-            <Col>
-              <FormGroup row>
                 <Label for="name" sm={2}>
                   Title
                 </Label>
-                <Col sm={10}>
+                <Col sm={4}>
                   <Input
                     type="text"
                     name="Title"
                     onChange={this.handleChange}
                     value={this.state.Title}
-                    placeholder="Enter Title"
                   />
                 </Col>
               </FormGroup>
@@ -83,13 +78,23 @@ class AddPost extends Component {
                 <Label for="name" sm={2}>
                   Body
                 </Label>
-                <Col sm={10}>
+                <Col sm={4}>
                   <Input
                     type="text"
                     name="Body"
                     onChange={this.handleChange}
                     value={this.state.Body}
-                    placeholder="Enter Body"
+                  />
+                </Col>
+                <Label for="name" sm={2}>
+                  UserId
+                </Label>
+                <Col sm={4}>
+                  <Input
+                    type="text"
+                    name="UserId"
+                    onChange={this.handleChange}
+                    value={this.state.UserId}
                   />
                 </Col>
               </FormGroup>
@@ -97,23 +102,7 @@ class AddPost extends Component {
 
             <Col>
               <FormGroup row>
-                <Label for="name" sm={2}>
-                  Author
-                </Label>
-                <Col sm={10}>
-                  <Input
-                    type="text"
-                    name="Author"
-                    onChange={this.handleChange}
-                    value={this.state.Author}
-                    placeholder="Enter Author"
-                  />
-                </Col>
-              </FormGroup>
-            </Col>
-            <Col>
-              <FormGroup row>
-                <Col sm={5} />
+                <Col sm={9} />
                 <Col sm={1}>
                   <button
                     type="button"
@@ -126,14 +115,12 @@ class AddPost extends Component {
 
                 <Col sm={1} />
                 <Col sm={1}>
-                  <Button color="danger">Cancel</Button>{" "}
+                  <Button color="danger">Cancel</Button>
                 </Col>
-                <Col sm={4} />
               </FormGroup>
             </Col>
           </Form>
         </Container>
-        <ListPosts />
       </div>
     );
   }
